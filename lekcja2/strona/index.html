@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Lekcja2</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+
+<body>
+    <div x-data="{count: 0, message: ''}">
+        <!-- <button x-bind:disabled="count === 0">Zmniejsz</button> -->
+        <button :disabled="count === 0" x-on:click="count--">Zmniejsz</button>
+
+        <!-- <button @click="count++">Zwiększ</button> -->
+        <button x-on:click="count++">Zwiększ</button>
+
+        <p x-text="'Aktualna wartość: ' + count"></p>
+
+        <div x-html="'<strong>Licznik: </strong>' + count"></div>
+
+        <div x-show="count > 0 && count <= 5"><br />Masz jakieś punkty!</div>
+
+        <!-- <div x-show="count > 5"><br />Gratulacje! Masz więcej niż 5 punktów!</div> -->
+        <template x-if="count > 5">
+            <div><br />Gratulacje! Masz więcej niż 5 punktów!</div>
+        </template>
+
+        <br />
+
+        <template x-for="n in count" :key="n">
+            <div x-text="'Element ' + n"></div>
+        </template>
+
+        <template x-if="count > 0">
+            <br />
+        </template>
+
+        <input type="text" x-model="message" />
+        <p x-text="message"></p>
+
+        <div x-data="{ message: 'Ładowanie...'}" x-init="setTimeout(() => {message = 'Witaj w aplikacji Alpine.JS'},
+            1000)">
+            <div x-text="message"></div>
+        </div>
+
+        <br />
+
+        <div x-data>
+            <input type="text" x-ref="inputField">
+            <button @click="$refs.inputField.focus()">Ustaw focus</button>
+            <button @click="$refs.inputField.value = 'Wypełniona wartość'">
+                Wypełnij</button>
+        </div>
+
+        <br />
+
+        <div x-data="{
+                count: 0,
+
+                // Metoda zwiększająca licznik
+                increment(){
+                    this.count++;
+                }
+            }">
+            <div>
+                <span x-text="count"></span>
+                <button @click="increment()">+</button>
+            </div>
+        </div>
+
+        <div class="card shadow" :class="{'active': isActive}"></div>
+    </div>
+</body>
+
+</html>

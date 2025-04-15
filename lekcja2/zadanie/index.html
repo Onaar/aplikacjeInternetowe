@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista zadań</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            margin: 4px 0;
+        }
+
+        .task-item.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .task-item button {
+            margin-left: 3px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 70%;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #zrobione {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Moja lista zadań</h1>
+
+        <!-- 
+      TWOJE ZADANIE:
+      Uzupełnij poniższy kod używając Alpine.JS
+    -->
+
+        <div x-data="{ 
+      /* Tutaj zdefiniuj potrzebne dane */
+      /* np. tasks: [], newTask: '' */
+
+      tasks: [], tasksDone: [], newTask: ''
+    }">
+            <!-- Formularz dodawania zadań -->
+            <div>
+                <!-- Uzupełnij formularz (pole tekstowe i przycisk) -->
+                <form>
+                    <input type="text" x-model="newTask" />
+                    <button type="button" @click="() => {
+                        tasks.push(newTask);
+                        tasksDone.push(false);
+                    }">
+                        Dodaj zadanie
+                    </button>
+                </form>
+            </div>
+
+            <!-- Lista zadań -->
+            <ul>
+                <!-- Uzupełnij wyświetlanie zadań z możliwością oznaczania jako ukończone -->
+                <template x-for="(task, index) in tasks" :key="index">
+                    <li class="task-item" :class="tasksDone[index] ? 'completed' : ''">
+                        <span x-text="task"></span>
+                        <button @click='tasksDone[index]=!tasksDone[index]'>Zmień status</button>
+                    </li>
+                </template>
+            </ul>
+        </div>
+</body>
+
+</html>
