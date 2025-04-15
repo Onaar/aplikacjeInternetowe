@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>jQuery Demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="container1">
+        <div id="container2">
+            <h1 id="tytulh1">jQuery Demo</h1>
+
+            <h2>1. Lista z ukrywaniem</h2>
+            <button id="toggleBtn">Pokaz/Ukryj listę</button>
+            <ul id="myList">
+                <li>Element 1</li>
+                <li>Element 2</li>
+                <li>Element 3</li>
+            </ul>
+
+            <h2>2. Formularz z walidacja</h2>
+            <form id="myForm">
+                <div>
+                    <label>Imie:</label>
+                    <input type="text" id="name">
+                    <span id="nameError" class="error"></span>
+                </div>
+                <div>
+                    <label>Email:</label>
+                    <input type="text" id="email">
+                    <span id="emailError" class="error"></span>
+                </div>
+                <br />
+                <button type="submit">Wyslij</button>
+            </form>
+        </div>
+
+        <h2>3. Ladowanie danych</h2>
+        <button id="loadData">Zaladuj dane</button>
+        <div id="results"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
